@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    container_name: db_erp_backend_app
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: erp-system-app
+      POSTGRES_USER: aliasgarli
+      POSTGRES_PASSWORD: 123456789
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+#    networks:
+#      - spring-boot-mysql-network
+#    healthcheck:
+#      test: ["CMD-SHELL","mysqladmin ping -h 127.0.0.1 -u root -p${MYSQL_ROOT_PASSWORD}"]
+#      interval: 50s
+#      timeout: 15s
+#      retries: 5
+#  app:
+#    build: .
+#    container_name: app_user_management
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - spring-boot-mysql-network
+#    depends_on:
+#      db:
+#        condition: service_healthy
+#networks:
+#  spring-boot-mysql-network:
+#    driver: bridge
+#volumes:
+#  db_data:
+

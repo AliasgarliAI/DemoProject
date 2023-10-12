@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://${db:localhost}:5432/erp-system-app
+    username: aliasgarli
+    password: 123456789
+    driver-class-name: org.postgresql.Driver
+
+  #  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: eelesgerli98@gmail.com
+#    password: hcqspnqoufavpfbp
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#  main:
+#    allow-circular-references: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+#jwt:
+#  secret-key: 'R9#?7M2?aO1&[+(^qd,;8;BYyWFq5;V~f+G(eF~*s[DID[R1agRiU"tMOuVzo_imZq4t7w9z$C&F)J@NcRfUjXn2r5u8x/A%D*G-KaPdSgVkYp3s6v9y$B&E(H+MbQeThWmZq4t7w!z%C*F-J@NcRfUjXn2r5u8x/A?D(G+KbPdSgVkYp3s6v9y$B&E)H@M'

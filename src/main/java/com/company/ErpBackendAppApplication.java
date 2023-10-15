@@ -20,8 +20,8 @@ public class ErpBackendAppApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		User user = new User(0L,"Alakbar","Aliasgarli","AliasgarliAI","994553504857","eelesgerli98@gmail.com","123456",
+		User user = new User(1L,"Narmina","Aliasgarli","AliasgarliNN","994553504857","eelesgerli98@gmail.com","123456",
 				"test/",true,true, LocalDateTime.now(), LocalDateTime.now(),LocalDateTime.now());
-		userRepository.insert(user);
+		userRepository.updateUser(user);
 	}
 }

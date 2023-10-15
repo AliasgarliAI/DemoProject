@@ -1,11 +1,20 @@
-server:
-  port: 8080
 spring:
   datasource:
-    url: jdbc:postgresql://${db:localhost}:5432/erp-system-app
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/db_demo_project
     username: aliasgarli
     password: 123456789
     driver-class-name: org.postgresql.Driver
+
+
+
+  #server:
+#  port: 8080
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://${dba}:5432/db_demo_project
+#    username: aliasgarli
+#    password: 123456789
+#    driver-class-name: org.postgresql.Driver
 
   #  mail:
 #    host: smtp.gmail.com

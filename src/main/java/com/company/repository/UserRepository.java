@@ -5,11 +5,13 @@ import com.company.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Transactional
 @RequiredArgsConstructor
 public class UserRepository {
 
@@ -71,7 +73,7 @@ public class UserRepository {
                 user.getLastLoginDate(), user.getLastLoginDateDisplay(), user.getJoinDate());
     }
 
-    public void updateUser(User user) {
+    public User updateUser(User user) {
         String query = "UPDATE \"users\" " +
                 "SET " +
                 "first_name = ?, last_name = ?, user_name = ?, " +
@@ -80,7 +82,7 @@ public class UserRepository {
                 "last_login_date = ?, last_login_date_display =?, join_date = ? " +
                 "WHERE Id = ?";
 
-        jdbcTemplate.update(query,
+        return jdbcTemplate.queryForObject(query, userRawMapper,
                 user.getFirstName(), user.getLastName(), user.getUserName(),
                 user.getPhoneNumber(), user.getPassword(), user.getEmail(),
                 user.getProfileImageUrl(), user.isNotLocked(), user.isActive(),
@@ -98,7 +100,15 @@ public class UserRepository {
     public boolean deleteUserById(long id) {
         String query = "delete from \"users\" u where u.Id =? ";
 
-        int result = jdbcTemplate.update(query,id);
+        int result = jdbcTemplate.update(query, id);
+
+        return result > 0;
+    }
+
+    public boolean deleteUserByUserName(String userName){
+        String query = "delete from \"users\" u where u.user_name = ?";
+
+        int result = jdbcTemplate.update(query, userName);
 
         return result > 0;
     }
